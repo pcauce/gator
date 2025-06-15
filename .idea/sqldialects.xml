@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/sql/queries/feed_follows.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/sql/queries/feeds.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/sql/queries/users.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/sql/schema/001_table-users.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/sql/schema/002_table-feeds.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/schema/003_table-feed-follows.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/schema/004_column-last-fetched.sql" dialect="PostgreSQL" />
     <file url="PROJECT" dialect="PostgreSQL" />
   </component>
 </project>

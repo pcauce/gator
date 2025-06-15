@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/xml"
+	"fmt"
 	"html"
 	"io"
 	"net/http"
@@ -14,7 +15,7 @@ type Feed struct {
 		Title       string `xml:"title"`
 		Link        string `xml:"link"`
 		Description string `xml:"description"`
-		Item        []Item `xml:"item"`
+		Items       []Item `xml:"item"`
 	} `xml:"channel"`
 }
 
@@ -33,6 +34,8 @@ func FetchFeed(ctx context.Context, feedURL string) (*Feed, error) {
 		return nil, err
 	}
 	req.Header.Set("User-Agent", "gator")
+
+	fmt.Println("--------Fetching feed: ", feedURL, "--------")
 
 	resp, err := client.Do(req)
 	if err != nil {
@@ -53,7 +56,7 @@ func FetchFeed(ctx context.Context, feedURL string) (*Feed, error) {
 
 	feedStruct.Channel.Title = html.UnescapeString(feedStruct.Channel.Title)
 	feedStruct.Channel.Description = html.UnescapeString(feedStruct.Channel.Description)
-	for _, item := range feedStruct.Channel.Item {
+	for _, item := range feedStruct.Channel.Items {
 		item.Title = html.UnescapeString(item.Title)
 		item.Description = html.UnescapeString(item.Description)
 	}

@@ -1,7 +1,6 @@
 package commands
 
 import (
-	"context"
 	"errors"
 	"fmt"
 	"github.com/pcauce/gator/internal/state"
@@ -13,15 +12,7 @@ func LoginUser(s *state.AppState, cmd Command) error {
 	}
 	userName := cmd.Args[0]
 
-	exists, err := s.DBQueries.CheckUserExists(context.Background(), userName)
-	if err != nil {
-		return err
-	}
-	if !exists {
-		return errors.New("user does not exist")
-	}
-
-	err = s.Config.SetUser(userName)
+	err := s.Config.SetUser(userName)
 	if err != nil {
 		return err
 	}
