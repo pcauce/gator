@@ -27,6 +27,7 @@ func LoadCommands() (CommandList, error) {
 	commands["follow"] = FollowFeed
 	commands["unfollow"] = UnfollowFeed
 	commands["following"] = FollowedByUser
+	commands["browse"] = BrowseSavedPosts
 
 	return commands, nil
 }
